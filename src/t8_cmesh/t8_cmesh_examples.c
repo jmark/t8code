@@ -2678,7 +2678,8 @@ t8_cmesh_new_squared_disk (const double radius, sc_MPI_Comm comm)
   const double xo = ro / M_SQRT2;
   const double yo = ro / M_SQRT2;
 
-  const int ntrees = 4*3; /* Number of cmesh elements resp. trees. */
+  const int nturns = 4; /* Number of cmesh elements resp. trees. */
+  const int ntrees = nturns * 3; /* Number of cmesh elements resp. trees. */
   const int nverts = 4; /* Number of vertices per cmesh element. */
 
   /* Arrays for the face connectivity computations via vertices. */
@@ -2699,7 +2700,7 @@ t8_cmesh_new_squared_disk (const double radius, sc_MPI_Comm comm)
   const double vertices_bot[4][3] = { { xi, 0.0, 0.0 }, { xi, yi, 0.0 }, { xo, 0.0, 0.0 }, { xo, yo, 0.0 } };
 
   int itree = 0;
-  for (int iturn = 0; iturn < 4; iturn++) {
+  for (int iturn = 0; iturn < nturns; iturn++) {
     double rot_mat[3][3];
     double rot_vertices_mid[4][3];
     double rot_vertices_top[4][3];
